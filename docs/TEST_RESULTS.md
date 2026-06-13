@@ -1,29 +1,34 @@
-# Test Results — Zoho Books
+# Test Results — Zoho Books (Full E2E)
 
 Date: 2026-06-13
 
-## Python (pytest)
+## Unit tests
 
-```
-25 passed
-```
+- Python: **25 passed**
+- Display: **11 passed**
 
-Covers: token verification, webhook parser (6 events), normalizer, full pipeline mocks.
+## Live E2E — all 6 event types
 
-## Display (node:test)
+| Event | Reference | Amount | HTTP | BP | Verify URL |
+|-------|-----------|--------|------|-----|------------|
+| `invoice.created` | INV-000003 | $375 USD | 202 | anchored | https://branchlesspay.com/verify/bd2a676a-976c-4dcb-bdef-224eddc06a1e |
+| `invoice.updated` | INV-UPD-BFB057 | $500 USD | 202 | anchored | https://branchlesspay.com/verify/60d83c6a-3bbc-4db5-89be-12e490a4053e |
+| `payment.created` | PAY-BFB057 | $250 USD | 202 | anchored | https://branchlesspay.com/verify/d338e36c-2d72-4a67-ad45-2a6359dc921c |
+| `bill.created` | BILL-BFB057 | $180 USD | 202 | anchored | https://branchlesspay.com/verify/003b2dc8-794f-4f4e-99f3-76307879fcb5 |
+| `creditnote.created` | CN-BFB057 | 75 AED | 202 | anchored | https://branchlesspay.com/verify/2cb5cc24-7113-4084-b5c9-d3b0b1d591f5 |
+| `purchaseorder.created` | PO-BFB057 | $920 USD | 202 | anchored | https://branchlesspay.com/verify/4ea08a8a-8f23-4638-ba96-e42555b8739b |
 
-```
-11 passed
-```
+Full JSON: [LIVE_VERIFY_URLS.json](LIVE_VERIFY_URLS.json)
 
-Covers: M3 field mapping, status badges, multi-currency, M4 polish.
+## Verify page (BP merge `81501e4`)
 
-## Live BP anchor
+Screenshots: [docs/screenshots/](screenshots/)
 
-Attempted `scripts/live_anchor_test.py` — pipeline normalizes correctly; BP returned `401 Invalid API key` (needs valid `BP_LICENSE_KEY` from Bos via WhatsApp).
+## Additional live invoices (Zoho Books UI)
 
-## Next
+| Invoice | Verify |
+|---------|--------|
+| INV-000001 | https://branchlesspay.com/verify/75838772-2eb1-4993-969b-d0ca49fde2fd |
+| INV-000002 | https://branchlesspay.com/verify/09c461d2-5b92-40e5-a394-1f13518b6812 |
 
-1. Configure Zoho Books webhook → cloudflared → local collector
-2. Valid `BP_LICENSE_KEY` for live anchor + verify URL
-3. BP team: merge `zohoVerifyMapping.ts` into VerifyPage (like Xero `db11427`)
+Contact: suhono@branchlesspay.com

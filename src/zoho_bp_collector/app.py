@@ -58,7 +58,11 @@ def _handle_webhook(req: Request, settings) -> tuple[Any, int]:
         _logger.warning("Token verification skipped (dev mode)")
 
     try:
-        event = parse_webhook_event(body)
+        event = parse_webhook_event(
+            body,
+            default_organization_id=settings.zoho_organization_id,
+            default_event_type=str(request.args.get("event") or "").strip(),
+        )
     except ValueError as exc:
         _logger.warning("Webhook parse error: %s", exc)
         return jsonify({"ok": False, "error": str(exc)}), 400

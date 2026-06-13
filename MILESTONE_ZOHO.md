@@ -2,7 +2,7 @@
 
 Repo: https://github.com/Suhono-BranchlessPay/Zoho  
 Branch: **`dev` only**  
-Status: **Scaffold complete** — awaiting Zoho Books org + live E2E
+Status: **M1–M4 complete** — BP verify mapping merged (`81501e4`)
 
 ---
 
@@ -27,7 +27,7 @@ Status: **Scaffold complete** — awaiting Zoho Books org + live E2E
 | BP poster + idempotency + failed queue | ✅ |
 | 6 event types mapped | ✅ |
 | Unit tests (Python) | ✅ |
-| Live E2E with Zoho Books trial | ⏳ Pending credentials |
+| Live E2E with Zoho Books trial | ✅ All 6 event types anchored |
 
 ---
 

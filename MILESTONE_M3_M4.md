@@ -24,8 +24,8 @@ Repo: https://github.com/Suhono-BranchlessPay/Zoho · branch **`dev`**
 | PDF evidence builder | ✅ |
 | Verification instructions | ✅ |
 | Sample fixture | ✅ |
-| BP `VerifyPage.tsx` merge | ⏳ Pending BP |
-| Verify page screenshots | ⏳ Add PNGs to `docs/screenshots/` |
+| BP `VerifyPage.tsx` merge | ✅ BP commit `81501e4` — PM2 reloaded |
+| Verify page screenshots | ✅ `docs/screenshots/` (6 event types) |
 
 Run: `cd display && npm test`
 

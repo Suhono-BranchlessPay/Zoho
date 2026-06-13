@@ -69,3 +69,21 @@ def test_parse_invoice_updated():
 def test_missing_event_raises():
     with pytest.raises(ValueError, match="Missing Zoho event"):
         parse_webhook_event({"organization_id": "x", "data": {}})
+
+
+def test_parse_default_zoho_invoice_payload():
+    body = {
+        "invoice_id": "460000000040001",
+        "invoice_number": "INV-000001",
+        "customer_name": "John Smith",
+        "total": 125.0,
+        "currency_code": "USD",
+        "status": "sent",
+        "date": "2026-06-13",
+        "due_date": "2026-07-13",
+    }
+    parsed = parse_webhook_event(body, default_organization_id="927684356")
+    assert parsed.event_type == "invoice.created"
+    assert parsed.resource_id == "460000000040001"
+    assert parsed.organization_id == "927684356"
+    assert parsed.document["invoice_number"] == "INV-000001"
