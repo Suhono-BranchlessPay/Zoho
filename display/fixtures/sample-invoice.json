@@ -1,0 +1,25 @@
+{
+  "event_type": "zoho_invoice_created",
+  "reference_id": "INV-000001",
+  "amount": 1500.0,
+  "currency": "USD",
+  "voucher_date": "2026-06-13",
+  "timestamp": "2026-06-13T10:00:00Z",
+  "organization_id": "org-123",
+  "business_name": "Test Company",
+  "metadata": {
+    "erp": "zoho_books",
+    "company_name": "Test Company",
+    "business_name": "Test Company",
+    "business_address": "123 Main St, Austin TX",
+    "organization_id": "org-123",
+    "document_type": "Invoice",
+    "contact_name": "John Smith",
+    "invoice_number": "INV-000001",
+    "status": "draft",
+    "due_date": "2026-07-13",
+    "currency_code": "USD",
+    "region": "US",
+    "amount_enriched": true
+  }
+}
